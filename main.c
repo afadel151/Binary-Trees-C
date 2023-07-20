@@ -59,23 +59,36 @@ void postOrder(struct node* root){
     printf("%d ", root->data);
 }
 
+int height(struct node* root){
+    if( root == NULL)
+        return 0;
+    else{
+        int lh = height(root->left)+1;
+        int rh = height(root->right)+1;
+        return (lh > rh ? lh : rh);
+    }
+}
+
 int main(){
-    int arrSize;
-    printf("no of nodes in the tree: ");
-    scanf("%d", &arrSize);
+    int arrSize = 8;
+//    printf("no of nodes in the tree: ");
+//    scanf("%d", &arrSize);
     int inp[arrSize];
-    printf("enter %d elements:\n", arrSize);
+//    printf("enter %d elements:\n", arrSize);
     for (int i = 0; i < arrSize; ++i)
-        scanf("%d", &inp[i]);
+        inp[i] = i;
+//        scanf("%d", &inp[i]);
 
     struct node* root = NULL;
     root = insertLevelOrder(root, inp, 0, arrSize);
 
-    printf("inorder: ");
-    inOrder(root);
-    printf("\npreorder: ");
-    preOrder(root);
-    printf("\npostorder: ");
-    postOrder(root);
+//    printf("inorder: ");
+//    inOrder(root);
+//    printf("\npreorder: ");
+//    preOrder(root);
+//    printf("\npostorder: ");
+//    postOrder(root);
+
+    printf("height: %d", height(root));
 
 }
