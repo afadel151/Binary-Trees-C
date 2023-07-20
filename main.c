@@ -69,8 +69,18 @@ int height(struct node* root){
     }
 }
 
+int nodeCount(struct node* root){
+    if( root == NULL)
+        return 0;
+    else{
+        int count = nodeCount(root->left);
+        count += nodeCount(root->right);
+        return count+1;
+    }
+}
+
 int main(){
-    int arrSize = 8;
+    int arrSize = 4;
 //    printf("no of nodes in the tree: ");
 //    scanf("%d", &arrSize);
     int inp[arrSize];
@@ -89,6 +99,7 @@ int main(){
 //    printf("\npostorder: ");
 //    postOrder(root);
 
-    printf("height: %d", height(root));
+    printf("height: %d\n", height(root));
+    printf("node count: %d\n", nodeCount(root));
 
 }
