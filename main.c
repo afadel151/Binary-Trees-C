@@ -79,6 +79,44 @@ int nodeCount(struct node* root){
     }
 }
 
+int countLeafNodes(struct node* root){
+    if( root == NULL )
+        return 0;
+    if( root->left == NULL && root->right == NULL)
+        return 1;
+    int count = countLeafNodes(root->left);
+    count += countLeafNodes(root->right);
+    return count;
+}
+
+int minNode(struct node* root){
+    if( root == NULL )
+        return INT_MAX;
+    int curr = root->data;
+    int lres = minNode(root->left);
+    int rres = minNode(root->right);
+
+    if( lres < curr)
+        curr = lres;
+    else if ( rres < curr )
+        curr = rres;
+    return curr;
+}
+
+int maxNode(struct node* root){
+    if( root == NULL)
+        return INT_MIN;
+    int curr = root->data;
+    int lres = maxNode(root->left);
+    int rres = maxNode(root->right);
+
+    if(lres>curr)
+        curr = lres;
+    else if (rres > curr)
+        curr = rres;
+    return curr;
+}
+
 int main(){
     int arrSize = 4;
 //    printf("no of nodes in the tree: ");
@@ -101,5 +139,7 @@ int main(){
 
     printf("height: %d\n", height(root));
     printf("node count: %d\n", nodeCount(root));
-
+    printf("leaf node count: %d\n", countLeafNodes(root));
+    printf("min node: %d\n", minNode(root));
+    printf("min node: %d\n", maxNode(root));
 }
