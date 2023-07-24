@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// height
-// no of leafnodes
-// min elem
+#include <limits.h> // for using INT_MIN INT_MAX in linux
 
 struct node{
     int data;
@@ -89,33 +86,33 @@ int countLeafNodes(struct node* root){
     return count;
 }
 
-// int minNode(struct node* root){
-//     if( root == NULL )
-//         return INT_MAX;
-//     int curr = root->data;
-//     int lres = minNode(root->left);
-//     int rres = minNode(root->right);
+int minNode(struct node* root){
+    if( root == NULL )
+        return INT_MAX;
+    int curr = root->data;
+    int lres = minNode(root->left);
+    int rres = minNode(root->right);
 
-//     if( lres < curr)
-//         curr = lres;
-//     else if ( rres < curr )
-//         curr = rres;
-//     return curr;
-// }
+    if( lres < curr)
+        curr = lres;
+    else if ( rres < curr )
+        curr = rres;
+    return curr;
+}
 
-// int maxNode(struct node* root){
-//     if( root == NULL)
-//         return INT_MIN;
-//     int curr = root->data;
-//     int lres = maxNode(root->left);
-//     int rres = maxNode(root->right);
+int maxNode(struct node* root){
+    if( root == NULL)
+        return INT_MIN;
+    int curr = root->data;
+    int lres = maxNode(root->left);
+    int rres = maxNode(root->right);
 
-//     if(lres>curr)
-//         curr = lres;
-//     else if (rres > curr)
-//         curr = rres;
-//     return curr;
-// }
+    if(lres>curr)
+        curr = lres;
+    else if (rres > curr)
+        curr = rres;
+    return curr;
+}
 
 void printLeaf(struct node* root){
     if (root == NULL)
@@ -138,55 +135,62 @@ void mirrorTree(struct node* root){
     root->right = temp;
 }
 
-void printNthLevel(struct node* root, int n){
+void printNthLevel(struct node* root, int level){
     if (root == NULL)
         return;
-    
+    if ( level == 1 )
+        printf("%d ", root->data);
+    else{
+        printNthLevel(root->left, level-1);
+        printNthLevel(root->right, level-1);
+    }
 }
 
-printLevelWise(struct node* root){
+void printLevelWise(struct node* root){
     int h = height(root);
-    for(int i = 0; i < h; i++){
+    printf("Levelwise print:\n");
+    for(int i = 1; i <= h; i++){
         printNthLevel(root, i);
+        printf("\n");
     }
 }
 
 int main(){
-    int arrSize = 7;
-//    printf("no of nodes in the tree: ");
-//    scanf("%d", &arrSize);
+    int arrSize = 6;
+    printf("no of nodes in the tree: ");
+    scanf("%d", &arrSize);
     int inp[arrSize];
-//    printf("enter %d elements:\n", arrSize);
+    printf("enter %d elements:\n", arrSize);
     for (int i = 0; i < arrSize; ++i)
-        inp[i] = i;
-//        scanf("%d", &inp[i]);
+        scanf("%d", &inp[i]);
 
     struct node* root = NULL;
     root = insertLevelOrder(root, inp, 0, arrSize);
 
-//    printf("inorder: ");
-//    inOrder(root);
-//    printf("\npreorder: ");
-//    preOrder(root);
-//    printf("\npostorder: ");
-//    postOrder(root);
+    printf("inorder: ");
+    inOrder(root);
+    printf("\npreorder: ");
+    preOrder(root);
+    printf("\npostorder: ");
+    postOrder(root);
 
     printf("height: %d\n", height(root));
     printf("node count: %d\n", nodeCount(root));
     printf("leaf node count: %d\n", countLeafNodes(root));
-    // printf("min node: %d\n", minNode(root));
-    // printf("min node: %d\n", maxNode(root));
+    printf("min node: %d\n", minNode(root));
+    printf("min node: %d\n", maxNode(root));
 
     // mirror image, print leaf nodes, print nodes level wise.
     printf("leaf nodes are: ");
     printLeaf(root);
     printf("\n");
 
+    // mirrors the tree
     mirrorTree(root);
 
+    // levelwise print
     printLevelWise(root);
-    
-
-
     printf("\n");
+
+    return 0;
 }
