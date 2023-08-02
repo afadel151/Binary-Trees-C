@@ -1,2 +1,6 @@
 #include <stdio.h>
-#include "main.c"
+#include "Headers/Binary Tree.h"
+
+// to be done
+// bst insertion
+// bst deletion 3 cases

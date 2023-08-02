@@ -19,7 +19,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a1cf1c-db84-48d9-9202-47d1cd017bc0" name="Changes" comment="leaf node count, max, min done">
-      <change afterPath="$PROJECT_DIR$/BST.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BST.c" beforeDir="false" afterPath="$PROJECT_DIR$/BST.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Binary Tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Binary Tree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Queue.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Headers/Stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/Headers/Stack.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Queue.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +88,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="C/C++ File.BST">
+  <component name="RunManager" selected="C/C++ File.main.c">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -127,7 +134,7 @@
       <workItem from="1689843882812" duration="1254000" />
       <workItem from="1689871302988" duration="9954000" />
       <workItem from="1690299595022" duration="1154000" />
-      <workItem from="1690956071006" duration="450000" />
+      <workItem from="1690956071006" duration="1908000" />
     </task>
     <task id="LOCAL-00001" summary="height using recursion done">
       <option name="closed" value="true" />
@@ -176,7 +183,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>178</line>
+          <line>27</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
