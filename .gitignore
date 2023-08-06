@@ -7,3 +7,5 @@ CMakeLists.txt
 main
 .idea/
 bin/
+*.xml
+*.iml

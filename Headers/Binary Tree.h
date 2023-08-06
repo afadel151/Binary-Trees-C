@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h> // for using INT_MIN INT_MAX in linux
 
 struct node{
     int data;
