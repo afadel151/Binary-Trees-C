@@ -5,4 +5,5 @@ CMakeLists.txt
 .vscode/
 *.json
 main
-.idea
+.idea/
+bin/
