@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include "Headers/Binary Tree.h"
 
-// to be done
-// bst deletion 3 cases
-/*
-    NO CHILD: set ancesotrs to point NULL 
-                and free node
-    SINGLE CHILD: set ancestor->next = child
-                and free node
-    TWO CHILD: inorder predecessor or inorder successor
-*/ 
 
 struct node* insertBST(struct node* root, int data){
     if(root == NULL){
@@ -65,18 +56,36 @@ struct node* inorderSucc(struct node* root){
     // finding the leftmost child of the right subtree
     // do not use for a tree with only one element
     if(root->left == NULL)
-        return NULL;
+        return root;
     struct node* succ, *succParent;
     succ = root->left;
-    succParent = root;
+    // succParent = root;
     while(succ->left != NULL){
-        succParent = succParent->left;
+        // succParent = succParent->left;
         succ = succ->left;
     }
     // printf("succParent: %d\nsucc: %d", succParent->data, succ->data);
     return succ;
 }
 
+struct node* deleteBST(struct node* root, int key){
+    if(root == NULL)
+        return root;
+    else if(root->left == NULL && root->right == NULL){
+        free(root);
+        return NULL;
+    }
+    if(key < root->data)
+        root->left = deleteBST(root->left, key);
+    else if(key > root->data)
+        root->right = deleteBST(root->right, key);
+    else{
+        struct node* succ = inorderSucc(root->right);
+        root->data = succ->data;
+        root->right = deleteBST(root->right, succ->data);
+    }
+    return root;
+}
 
 void main(){
     int arr[] = {4,2,1,3,6,5,7};
@@ -85,9 +94,7 @@ void main(){
     struct node* root = createBST(arr, size);
     
     printLevelWise(root);
+    root = deleteBST(root, arr[5]);
+    printLevelWise(root);
 
-    struct node* thrash = inorderSucc(root);
-    struct node* res = searchBST(root, arr[0]);
-    if( res->data == arr[0])
-        printf("pass\n");
 }
