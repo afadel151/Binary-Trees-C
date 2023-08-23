@@ -4,7 +4,7 @@
 
 struct node* insertBST(struct node* root, int data){
     if(root == NULL){
-        root = createTree(data);
+        root = createTree(data);                                                                            
         return root;
     }
     struct node* rootCpy = root;
@@ -54,17 +54,13 @@ struct node* searchBST(struct node* root, int key){
 
 struct node* inorderSucc(struct node* root){
     // finding the leftmost child of the right subtree
-    // do not use for a tree with only one element
     if(root->left == NULL)
         return root;
     struct node* succ, *succParent;
     succ = root->left;
-    // succParent = root;
     while(succ->left != NULL){
-        // succParent = succParent->left;
         succ = succ->left;
     }
-    // printf("succParent: %d\nsucc: %d", succParent->data, succ->data);
     return succ;
 }
 
