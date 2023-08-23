@@ -18,12 +18,19 @@
 // RR
 
 /*
- * To-DO
+ * To-Do
  * height - get height of subtree from struct
  * 4 rotation functions
  * get balance factor of a node
  * AVL insertion - BST + update height + rotate if req
+*/
+
+int heightAVL(struct node* root){
+    if(!root)
+        return -1;
+    return root->height;
+}
 
 void main(){
-
+    printf("%d\n", heightAVL(NULL));
 }
