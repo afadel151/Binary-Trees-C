@@ -31,6 +31,25 @@ int heightAVL(struct node* root){
     return root->height;
 }
 
+struct node* rightRotate(struct node* root){
+    // set pointers
+    struct node* x, *y;
+    x = root->left;
+    y = x->right;
+
+    // rotate
+    x->right = root;
+    root->left = y;
+
+    // update height
+    root->height = height(root);
+    x->height = height(x);
+
+    // return new root
+    return x;
+}
+
+
 void main(){
     printf("%d\n", heightAVL(NULL));
 }
