@@ -49,6 +49,28 @@ struct node* rightRotate(struct node* root){
     return x;
 }
 
+struct node* leftRotate(struct node* root){
+    // set pointers
+    struct node* x, *y;
+    x = root->right;
+    y = x->left;
+
+    // rotate
+    x->left = root;
+    root->right = y;
+
+    // update height
+    root->height = height(root);
+    x->height = height(x);
+    // return new root
+    return x;
+}
+
+int getBalance(struct node* root){
+    if(root == NULL)
+        return 0;
+    return root->left->height - root->right->height;
+}
 
 void main(){
     printf("%d\n", heightAVL(NULL));
