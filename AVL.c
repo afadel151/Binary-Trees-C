@@ -2,20 +2,23 @@
 #include <stdlib.h>
 #include "Headers/Binary Tree.h"
 
-// AVL trees is a BST with hight diff of left and right subtree not more than one
-// thus AVL is self balenced
-//
-// operations on BST are O(h) thus optimizing height is must
-//
-// types of rotation
-// 1. left
-// 2. right
-//
-// 4 cases of rotation
-// LL
-// LR
-// RL
-// RR
+/*
+ *AVL trees is a BST with hight diff of left and right subtree not more than one
+ *thus AVL is self balenced
+ *AVL tree is independant of the order in which data is inserted
+
+ *operations on BST are O(h) thus optimizing height is must
+
+ *types of rotation
+ *1. left
+ *2. right
+
+ *4 cases of rotation
+ *LL
+ *LR
+ *RL
+ *RR
+*/
 
 /*
  * To-Do
@@ -69,10 +72,6 @@ struct node* leftRotate(struct node* root){
 int getBalance(struct node* root){
     if(root == NULL)
         return 0;
-    // if(root->left == NULL && root->right != NULL)
-    //     return root->right->height;
-    // if(root->left != NULL && root->right == NULL)
-    //     return root->left->height;
     // here functions are called instead of accessing height to struct
     // because function can handle null pointer
     return heightAVL(root->left) - heightAVL(root->right);
@@ -116,15 +115,39 @@ struct node* insertAVL(struct node* root, int key){
     return root;
 }
 
+void heightCheck(struct node* root){
+    if(root->left != NULL)
+        heightCheck(root->left);
+    if(root->height == height(root)){
+        printf("\033[0;32m");
+        printf("height check passed for node with %d\n", root->data);
+        printf("\033[0m");
+    }
+    else{
+        printf("\033[1;31m");
+        printf("height wrong for %d\n", root->data); 
+        printf("\033[0m");
+    }
+    if(root->right != NULL)
+        heightCheck(root->right);
+}
+
 void main(){
     struct node* root = NULL;
-    root = insertAVL(root, 30);
     root = insertAVL(root, 10);
     root = insertAVL(root, 20);
+    root = insertAVL(root, 30);
+    root = insertAVL(root, 70);
     root = insertAVL(root, 40);
     root = insertAVL(root, 50);
+    root = insertAVL(root, 60);
+
     printLevelWise(root);
-    inOrder(root);
     printf("\n");
+
+    printf("inorder: ");
+    inOrder(root);
+    printf("\n\n");
+    heightCheck(root);    
 
 }
