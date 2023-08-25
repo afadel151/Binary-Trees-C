@@ -20,14 +20,14 @@
 /*
  * To-Do
  * height - get height of subtree from struct
- * 4 rotation functions
+ * two rotation functions
  * get balance factor of a node
  * AVL insertion - BST + update height + rotate if req
 */
 
 int heightAVL(struct node* root){
     if(!root)
-        return -1;
+        return 0;
     return root->height;
 }
 
@@ -69,9 +69,62 @@ struct node* leftRotate(struct node* root){
 int getBalance(struct node* root){
     if(root == NULL)
         return 0;
-    return root->left->height - root->right->height;
+    // if(root->left == NULL && root->right != NULL)
+    //     return root->right->height;
+    // if(root->left != NULL && root->right == NULL)
+    //     return root->left->height;
+    // here functions are called instead of accessing height to struct
+    // because function can handle null pointer
+    return heightAVL(root->left) - heightAVL(root->right);
+}
+
+struct node* insertAVL(struct node* root, int key){
+    // insertBST
+    if(root == NULL)
+        return createNode(key);
+    else if(key < root->data)
+        root->left = insertAVL(root->left, key);
+    else if(key > root->data)
+        root->right = insertAVL(root->right, key);
+    else
+        return root;
+
+    // update height
+    root->height = height(root);
+
+    // check balance factor
+    int bal = getBalance(root);
+
+    // rotations if required
+    // RR
+    if(bal > 1 && root->left->data > key)
+        return rightRotate(root);
+    // LL
+    if(bal < -1 && root->right->data < key)
+        return leftRotate(root);
+    // LR
+    if(bal > 1 && root->left->data < key){
+        root->left = leftRotate(root->left);
+        return rightRotate(root);
+    }
+    // RL
+    if(bal < -1 && root->right->data > key){
+        root->right = rightRotate(root->right);
+        return leftRotate(root);
+    }
+    // no rotations
+    return root;
 }
 
 void main(){
-    printf("%d\n", heightAVL(NULL));
+    struct node* root = NULL;
+    root = insertAVL(root, 30);
+    root = insertAVL(root, 10);
+    root = insertAVL(root, 20);
+    root = insertAVL(root, 40);
+    root = insertAVL(root, 50);
+    printLevelWise(root);
+    inOrder(root);
+    printf("\n");
+
 }

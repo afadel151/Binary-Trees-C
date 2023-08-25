@@ -14,6 +14,7 @@ struct node* createNode(int data){
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
+    newNode->height = 1;
     return newNode;
 }
 
