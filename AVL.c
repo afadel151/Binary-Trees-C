@@ -3,21 +3,21 @@
 #include "Headers/Binary Tree.h"
 
 /*
- *AVL trees is a BST with hight diff of left and right subtree not more than one
- *thus AVL is self balenced
- *AVL tree is independant of the order in which data is inserted
-
- *operations on BST are O(h) thus optimizing height is must
-
- *types of rotation
- *1. left
- *2. right
-
- *4 cases of rotation
- *LL
- *LR
- *RL
- *RR
+ * AVL trees is a BST with hight diff of left and right subtree not more than one
+ * thus AVL is self balenced
+ * AVL tree is independant of the order in which data is inserted
+ * 
+ * operations on BST are O(h) thus optimizing height is must
+ * 
+ * types of rotation
+ * 1. left
+ * 2. right
+ *
+ * 4 cases of rotation
+ * LL
+ * LR
+ * RL
+ * RR
 */
 
 /*
