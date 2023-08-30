@@ -10,3 +10,4 @@ bin/
 *.xml
 *.iml
 *.swp
+.gitignore

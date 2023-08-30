@@ -35,6 +35,11 @@ int heightAVL(struct node* root){
 }
 
 struct node* rightRotate(struct node* root){
+    //      r               x
+    //     /                 \ 
+    //    x    x    ->        r
+    //     \                 /
+    //      y               y
     // set pointers
     struct node* x, *y;
     x = root->left;
@@ -53,6 +58,11 @@ struct node* rightRotate(struct node* root){
 }
 
 struct node* leftRotate(struct node* root){
+    //      r               x
+    //       \             /
+    //        x    ->     r
+    //      /              \ 
+    //     y                y
     // set pointers
     struct node* x, *y;
     x = root->right;
