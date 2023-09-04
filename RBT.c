@@ -66,7 +66,7 @@ node* rightRotate(node* root, node* temp){
     temp->left = lchild->right;
     if(temp->left)
         temp->left->parent = temp;
-    lchild->parent = temp->parent
+    lchild->parent = temp->parent;
     if(!temp->parent)
         root = lchild; 
     else if(temp->parent->left == temp)
@@ -75,6 +75,23 @@ node* rightRotate(node* root, node* temp){
         temp->parent->right = lchild;
     lchild->right = temp;
     temp->parent = lchild;
+    return root;
+}
+
+node* leftRotate(node* root, node* temp){
+    node* rchild = temp->right;
+    temp->right = rchild->left;
+    if(temp->right)
+        rchild->left->parent = temp;
+    rchild->parent = temp->parent;
+    if(!temp->parent)
+        root = rchild;
+    else if(temp->parent->left == temp)
+        temp->parent->left = rchild;
+    else
+        temp->parent->right = rchild;
+    temp->parent = rchild;
+    rchild->left = temp;
     return root;
 }
 
