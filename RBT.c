@@ -6,13 +6,17 @@ typedef struct RBTnode node;
 
 /*
  * in RBT every node has either red or black color
- * NULL is considered as black
+ * NULL and root are always black
+ * if a node is red then children are black
+ * all paths from a node to NULL have same no of black nodes
+ * 
  * in RBT two methods are used for balencing
  * 1. Recoloring
  * 2. Rotation
  *
  * Algorithm
  * 1. insert BST
+ *      note: by default a node has red color
  * 2. if(x == root) setColour(black)
  * 3. if(x->parent == black) exit
  * 4. if(x != root || x->parent->color == red)
@@ -21,7 +25,10 @@ typedef struct RBTnode node;
  * 			2. color grandparent red
  * 		2. if (x->uncle == black)
  * 			1. suitable rotation
+ *              if LL or RR rotation then recolor
  */
+
+// insertions, updating height, verifying balance factor and perform rotations on AVL trees
 
 struct RBTnode{
     int data;
@@ -30,6 +37,29 @@ struct RBTnode{
     struct RBTnode* right;
     struct RBTnode* parent;
 };
+
+node* newNode(int data){
+    node* lol = (node*)malloc(sizeof(node));
+    lol->data = data;
+    lol->color = 0;
+    lol->left = NULL;
+    lol->right = NULL;
+    lol->parent = NULL;
+}
+
+node* insertRBT(node* root, int data){
+    if(root == NULL)
+        return newNode(data);
+    if(data < root->data){
+        root->left = insertBST(root->left, data);
+        root->left->parent = root;
+    }
+    else if(data > root->data){
+        root->right = insertBST(root->right, data);
+        root->right->parent = root;
+    }
+    return root;
+}
 
 void main(){
     return;
