@@ -51,13 +51,30 @@ node* insertRBT(node* root, int data){
     if(root == NULL)
         return newNode(data);
     if(data < root->data){
-        root->left = insertBST(root->left, data);
+        root->left = insertRBT(root->left, data);
         root->left->parent = root;
     }
     else if(data > root->data){
-        root->right = insertBST(root->right, data);
+        root->right = insertRBT(root->right, data);
         root->right->parent = root;
     }
+    return root;
+}
+
+node* rightRotate(node* root, node* temp){
+    node* lchild = temp->left;
+    temp->left = lchild->right;
+    if(temp->left)
+        temp->left->parent = temp;
+    lchild->parent = temp->parent
+    if(!temp->parent)
+        root = lchild; 
+    else if(temp->parent->left == temp)
+        temp->parent->left = lchild;
+    else
+        temp->parent->right = lchild;
+    lchild->right = temp;
+    temp->parent = lchild;
     return root;
 }
 
