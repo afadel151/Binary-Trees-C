@@ -96,5 +96,14 @@ node* leftRotate(node* root, node* temp){
 }
 
 void main(){
+    // test case for L & R rotation
+    node *a = newNode(1),*b= newNode(2),*c= newNode(3);
+    a->left=b;
+    b->right=c;
+    c->parent=b;
+    b->parent=a;
+    rightRotate(a, a);
+    leftRotate(b, b);
+    
     return;
 }
