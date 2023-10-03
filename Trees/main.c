@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <limits.h> // for using INT_MIN INT_MAX in linux
 
-#include "Headers/Binary Tree.h"
+#include "../Headers/Binary Tree.h"
 
 int main(){
     int arrSize = 6;

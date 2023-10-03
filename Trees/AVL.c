@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Headers/Binary Tree.h"
+#include "../Headers/Binary Tree.h"
 
 /*
  * AVL trees is a BST with hight diff of left and right subtree not more than one

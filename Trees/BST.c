@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Headers/Binary Tree.h"
+#include "../Headers/Binary Tree.h"
 
 
 struct node* insertBST(struct node* root, int data){
