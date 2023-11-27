@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../Headers/Stack.h"
-
 /*
  * algorithm:
  * 1. visit adjacent unvisited node, mark it visited
@@ -11,8 +9,6 @@
  * 4. goto 1
  * 5. if stack.empty() end
 */
-
-#define MAX 100
 
 struct Graph{
     int nodeCount;
@@ -87,11 +83,11 @@ Graph* createAdjMatrix(){
     return graph;
 }
 
-void printMatrix(int **ptr, int size){
+void printMatrix(Graph* graph){
     printf("Adjacency Matrix:\n");
-    for(int i = 0; i < size; i++){
-        for(int j = 0; j < size; j++){
-            printf("%d ", ptr[i][j]);
+    for(int i = 0; i < graph->nodeCount; i++){
+        for(int j = 0; j < graph->nodeCount; j++){
+            printf("%d ", graph->adj[i][j]);
         }
         printf("\n");
     }

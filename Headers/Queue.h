@@ -59,14 +59,15 @@ void enQueue(struct Queue* q, int k)
 }
 
 // Function to remove a key from given queue q
-void deQueue(struct Queue* q)
+int deQueue(struct Queue* q)
 {
     // If queue is empty, return NULL.
     if (q->front == NULL)
-        return;
+        return -1;
 
     // Store previous front and move front one node ahead
     struct QNode* temp = q->front;
+    int key = q->front->key;
 
     q->front = q->front->next;
 
@@ -75,4 +76,5 @@ void deQueue(struct Queue* q)
         q->rear = NULL;
 
     free(temp);
+    return key;
 }

@@ -13,6 +13,8 @@ void DFS(Graph* graph, int nodeIndex){
 }
 
 void DFSTraversal(Graph* graph){
+    printf("DFS Traversal: ");
+
     // calloc initilizes visited array to zero
     if(graph->visited == NULL)
         graph->visited = (int*) calloc(graph->nodeCount, sizeof(int));
@@ -29,7 +31,7 @@ void DFSTraversal(Graph* graph){
 
 void main(){
     Graph* g = createAdjMatrix();
-    printMatrix(g->adj, g->nodeCount);
+    printMatrix(g);
 
     DFSTraversal(g);
 }
