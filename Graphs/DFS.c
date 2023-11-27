@@ -1,57 +1,35 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "Create Graph.h"
 
-#include "../Headers/Stack.h"
+// depth first traversal recrusive function to print traversal
+void DFS(Graph* graph, int nodeIndex){
+    graph->visited[nodeIndex] = 1;
+    printf("%d ", nodeIndex);
 
-/*
- * algorithm:
- * 1. visit adjacent unvisited node, mark it visited
- * 2. display it & push in stack
- * 3. if no adjacent vertex found pop()
- * 4. goto 1
- * 5. if stack.empty() end
-*/
+    for(int connectedNode = 0; connectedNode < graph->nodeCount; connectedNode++){
+        if(!graph->visited[connectedNode] && graph->adj[nodeIndex][connectedNode])
+            DFS(graph, connectedNode);
+    }  
+}
 
-#define MAX 100
+void DFSTraversal(Graph* graph){
+    // calloc initilizes visited array to zero
+    if(graph->visited == NULL)
+        graph->visited = (int*) calloc(graph->nodeCount, sizeof(int));
 
-struct stack* st;
-
-int n;
-int adj[MAX][MAX];
-int state[MAX];
-
-// function to create graph 
-// ie populate the adjacency matrix
-void createGraph(){
-    printf("Creating a graph\n");
-    int i, max_edges, origin, dest;
-    printf("Enter the number of nodes in graph: ");
-    scanf("%d", &n);
-    // printf("%d", i);
-    max_edges = n*(n-1);
-
-	for(i = 1; i < max_edges; i++){
-		printf("Enter edge %d (-1 -1 to exit): ", i);
-		scanf("%d %d", &origin, &dest);
-
-        if(origin == -1 && dest == -1)
-            break;
-
-        else if(origin < 0 || origin > n || dest < 0 || dest > n){
-            printf("invalid input! retry...\n");
-            i--;
-        }
-
-		else if(adj[origin][dest] == 1){
-            printf("Edge already exists! retry...\n");
-            i--;
-        }
-		else adj[origin][dest] = 1;
-	} 
+    // this triggers the DFS() recursive function
+    // the for loop is there if the graph is disconnected
+    for(int i = 0; i < graph->nodeCount; i++){
+        if(!graph->visited[i])
+            DFS(graph, i);
+    }
+    printf("\n");
+    free(graph->visited);
 }
 
 void main(){
-    st = createStack(MAX);
-    
-    createGraph();
+    Graph* g = createAdjMatrix();
+    printMatrix(g->adj, g->nodeCount);
+
+    DFSTraversal(g);
 }
