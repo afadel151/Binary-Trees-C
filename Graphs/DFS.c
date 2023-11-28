@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Create Graph.h"
+#include "Adjacency matrix.c"
 
 // depth first traversal recrusive function to print traversal
 void DFS(Graph* graph, int nodeIndex){

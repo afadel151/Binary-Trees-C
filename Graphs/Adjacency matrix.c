@@ -1,22 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-/*
- * algorithm:
- * 1. visit adjacent unvisited node, mark it visited
- * 2. display it & push in stack
- * 3. if no adjacent vertex found pop()
- * 4. goto 1
- * 5. if stack.empty() end
-*/
-
-struct Graph{
-    int nodeCount;
-    int **adj;
-    int *visited;
-};
-
-typedef struct Graph Graph;
+#include "../Headers/Graph.h"
 
 void adjMatrixTestCase(Graph* graph){
     int matrix[7][7] = {
@@ -43,7 +26,7 @@ Graph* createAdjMatrix(){
     int max_edges, origin, destination;
 
     printf("Creating a adjacency matrix\n");
-    printf("Enter no of nodes in graph: ");
+    // printf("Enter no of nodes in graph: ");
     // scanf("%d", &graph->nodeCount);
     graph->nodeCount = 7;
 
@@ -83,13 +66,7 @@ Graph* createAdjMatrix(){
     return graph;
 }
 
-void printMatrix(Graph* graph){
-    printf("Adjacency Matrix:\n");
-    for(int i = 0; i < graph->nodeCount; i++){
-        for(int j = 0; j < graph->nodeCount; j++){
-            printf("%d ", graph->adj[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
+// void main(){
+//     Graph *g = createAdjMatrix();
+//     printMatrix(g);
+// }

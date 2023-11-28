@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Create Graph.h"
+#include "Adjacency matrix.c"
 #include "../Headers/Queue.h"
 
 void BFS(Graph *graph){
