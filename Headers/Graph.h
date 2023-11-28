@@ -10,13 +10,27 @@
  * 5. if stack.empty() end
 */
 
+// structure for adjacency list
+struct adjNode{
+    int vertex;
+    struct adjNode* next;
+};
+
 struct Graph{
     int nodeCount;
     int **adj;
+    struct adjNode **adjList;
     int *visited;
 };
 
 typedef struct Graph Graph;
+
+struct adjNode* createAdjNode(int vertex, struct adjNode* next){
+    struct adjNode* newAdjNode = (struct adjNode*) malloc(sizeof(struct adjNode*));
+    newAdjNode->vertex = vertex;
+    newAdjNode->next = next;
+    return newAdjNode;
+}
 
 
 void printMatrix(Graph* graph){
