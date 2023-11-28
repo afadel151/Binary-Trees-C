@@ -39,7 +39,7 @@ Graph* createAdjList(int nodeCount){
 void printAdjList(Graph* graph){
     for(int i = 0; i < graph->nodeCount; i++){
         struct adjNode *vertexPointer = graph->adjList[i];
-        printf("%d: ", i);
+        printf("vertex: %d ", i);
         while(vertexPointer != NULL){
             printf("--> %d ", vertexPointer->vertex);
             vertexPointer = vertexPointer->next;
